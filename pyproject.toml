@@ -7,7 +7,7 @@ requires-python = ">=3.11,<3.13"
 license = { file = "LICENSE" }
 authors = [{ name = "Quercus Hamlin", email = "qhamlin@asrcfederal.com" }]
 maintainers = [{ name = "Quercus Hamlin", email = "qhamlin@asrcfederal.com" }]
-dependencies = []
+dependencies = ["pyproj==3.7.1"]
 
 [project.optional-dependencies]
 dev = [
@@ -37,6 +37,7 @@ lint.select = [
   "I",      # isort
   "D",      # pydocstyle
   "B",      # flake8-bugbear
+  "Q",      # flake8-quotes
   "TID",    # flake8-tidy-imports
   "C4",     # flake8-comprehensions
   "BLE",    # flake8-blind-except
