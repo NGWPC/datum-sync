@@ -3,4 +3,7 @@ class TransformError(BaseException):
 
 
 class ZConversionWarning(UserWarning):
-    """Raised to alert user that z values were input but not changed."""
+    """Raised to alert user that z values may not have been convereted due to CRS selection.
+
+    This may or may not be intentional
+    """
