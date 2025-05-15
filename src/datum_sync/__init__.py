@@ -1,1 +1,1 @@
-from datum_sync.datum_sync import convert_datum
+from datum_sync.datum_sync import DatumSync

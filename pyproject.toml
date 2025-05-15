@@ -7,7 +7,7 @@ requires-python = ">=3.11,<3.14"
 license = { file = "LICENSE" }
 authors = [{ name = "Quercus Hamlin", email = "qhamlin@asrcfederal.com" }]
 maintainers = [{ name = "Quercus Hamlin", email = "qhamlin@asrcfederal.com" }]
-dependencies = ["pyproj==3.7.1"]
+dependencies = ["bmipy==2.0.1","pyproj==3.7.1"]
 
 [project.optional-dependencies]
 dev = [
