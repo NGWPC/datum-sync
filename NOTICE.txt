@@ -1,8 +1,5 @@
 --
-This product includes portions of the Bootstrap project v5.3.3
-
-Copyright 2011-2024 The Bootstrap Authors
+This product includes portions of the hellkite50/bmi_pytorch SDK
 
 Licensed under the MIT license
-
 --
