@@ -116,11 +116,11 @@ class DatumSync:
                 self.zz = None
                 self.output = None
 
-            return output  # type:ignore[no-any-return]
+            return output
 
         # 2D transformation
         else:
-            return self.transform.transform(xx, yy)  # type:ignore[no-any-return]
+            return self.transform.transform(xx, yy)
 
     @staticmethod
     def epsg_to_transform(crs_input: int, crs_output: int) -> Transformer:
@@ -134,6 +134,11 @@ class DatumSync:
         -------
             Transformer: pyproj transformer
         """
+        # This will allow transformation grids to be downloaded if they are not included in base package
+        # Needed for vertical transform
+        # TODO: Download grids a priori with package building; remove network connectivity
+        pyproj.network.set_network_enabled(active=True)
+
         try:
             crs_in = CRS.from_epsg(crs_input)
             crs_out = CRS.from_epsg(crs_output)

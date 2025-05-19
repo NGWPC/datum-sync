@@ -7,17 +7,19 @@ requires-python = ">=3.11,<3.14"
 license = { file = "LICENSE" }
 authors = [{ name = "Quercus Hamlin", email = "qhamlin@asrcfederal.com" }]
 maintainers = [{ name = "Quercus Hamlin", email = "qhamlin@asrcfederal.com" }]
-dependencies = ["bmipy==2.0.1","pyproj==3.7.1"]
+dependencies = ["bmipy==2.0.1","pyproj==3.7.1", "pydantic==2.11.4"]
 
 [project.optional-dependencies]
-dev = [
+dev_examples = [
     "pre-commit>=3.8.0",
     "ipykernel>=6.29.5",
-    "jupyterlab",
+    "jupyterlab==4.4.2",
     "pytest>=8.3.2",
-    "ruff",
-    "black",
-    "mypy",
+    "ruff==0.11.10",
+    "black==25.1.0",
+    "mypy==1.15.0",
+    "types-PyYAML==6.0.12.20250516",
+    "pandas==2.2.3",
 ]
 
 tests = ["pytest", "pytest-cov"]
@@ -79,14 +81,15 @@ convention = "numpy"
 "docs/*" = ["I"]
 "tests/*" = ["D"]
 "*/__init__.py" = ["F401"]
+"src/datum_sync/bmi/bmi_base.py" = ["D102"] # missing public docstrings
 
 [tool.mypy]
 python_version = "3.11"
-warn_return_any = true
+warn_return_any = false
+disallow_any_unimported = false
 warn_unused_configs = true
 strict_optional = true
 ignore_missing_imports = true
-disallow_any_unimported = false
 check_untyped_defs = true
 disallow_untyped_defs = true
 no_implicit_optional = true
