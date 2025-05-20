@@ -8,6 +8,9 @@ from pyproj.transformer import TransformerGroup
 
 from datum_sync.exceptions import TransformError, ZConversionWarning
 
+__all__ = ["DatumSync"]
+
+
 FT_TO_M = 0.3048
 M_TO_FT = 3.28084
 
@@ -74,7 +77,7 @@ class DatumSync:
         Either define crs_input and crs_output OR define transform. Will raise error if incorrectly specified.
 
         Args:
-            xx (Any): Acalar or array. Input x coordinate(s).
+            xx (Any): Scalar or array. Input x coordinate(s).
             yy (Any): Scalar or array. Input y coordinate(s).
             zz (Any): Scalar or array. Input z coordinate(s).
             z_warn (bool): Flag to check to see if z values were convereted and warn if not. Defaults to True.
@@ -99,7 +102,7 @@ class DatumSync:
             - :class:`pandas.Series`
         """
         # for transforming 3D coordinates
-        if zz:
+        if zz is not None:
             # saving to class for checks
             output = self.transform.transform(xx, yy, zz)
 

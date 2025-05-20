@@ -3,6 +3,8 @@
 from bmipy import Bmi
 from numpy.typing import NDArray
 
+__all__ = ["BmiBase"]
+
 
 class BmiBase(Bmi):
     """Base BMI with minimal functionality

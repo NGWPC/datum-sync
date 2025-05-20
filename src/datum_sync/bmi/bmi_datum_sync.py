@@ -9,6 +9,8 @@ from datum_sync import DatumSync
 from datum_sync.bmi.bmi_base import BmiBase
 from datum_sync.bmi.config import DatumSyncConfig
 
+__all__ = ["BmiDatumSync"]
+
 
 class BmiDatumSync(BmiBase):
     """BMI composition wrapper for datum sync"""
@@ -45,9 +47,11 @@ class BmiDatumSync(BmiBase):
 
         # load into pydantic model and save in class for querying
         self.config = DatumSyncConfig.model_validate(config_read)
-        self.input["crs_in"] = self.config.crs_input
-        self.input["crs_out"] = self.config.crs_output
-        self.input["z_warn"] = self.config.z_warn if self.config.z_warn is not None else True
+        self.input["crs_in"] = np.array(self.config.crs_input)
+        self.input["crs_out"] = np.array(self.config.crs_output)
+        self.input["z_warn"] = (
+            np.array(self.config.z_warn) if self.config.z_warn is not None else np.array(True)
+        )
 
         transformer = DatumSync.epsg_to_transform(
             crs_input=self.config.crs_input, crs_output=self.config.crs_output
