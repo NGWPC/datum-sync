@@ -13,3 +13,13 @@ To run examples and/or develop:
 
 To test:
 `pip install -r pyproject.toml --extra test`
+
+# NextGen inflows & outflows dataset to coastal area
+Dataset related to NextGen inflows and outflows has been added to 'examples/data/NextGen'
+
+To verify that the dataset meets the required criteria, run the following test code:  
+'pytest -v tests/unit/test_NGen_datum_sync.py'
+
+To convert the NextGen dataset into the crs that the coastal model needs, please run the following code:
+'examples/NGen_bmi_datum_sync.py'  
+prior to run the code, verify that the bmi_config.yaml file in examples/data/NextGen/ is properly configured to match your current coordinate reference system (CRS) and target output CRS.
