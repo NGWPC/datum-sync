@@ -1,20 +1,26 @@
 [project]
 name = "datum-sync"
-version = "0.1.0"
+version = "2025.06"
 description = "A BMI-compliant tool to convert between vertical datum"
 readme = "README.md"
 requires-python = ">=3.11,<3.14"
 license = { file = "LICENSE" }
 authors = [{ name = "Quercus Hamlin", email = "qhamlin@asrcfederal.com" }]
 maintainers = [{ name = "Quercus Hamlin", email = "qhamlin@asrcfederal.com" }]
-dependencies = ["bmipy==2.0.1", "pyproj==3.7.1", "pydantic==2.11.4"]
+dependencies = [
+  "bmipy==2.0.1",
+  "pyproj==3.7.1",
+  "pydantic==2.11.4",
+  "PyYAML==6.0.2",
+]
 
 [project.optional-dependencies]
-dev_examples = [
+dev-examples = [
   "pre-commit>=3.8.0",
   "ipykernel>=6.29.5",
   "jupyterlab==4.4.2",
   "pytest>=8.3.2",
+  "pytest-cov==6.1.1",
   "ruff==0.11.10",
   "black==25.1.0",
   "mypy==1.15.0",
@@ -22,7 +28,9 @@ dev_examples = [
   "pandas==2.2.3",
 ]
 
-tests = ["pytest==8.3.5", "pytest-cov==6.1.1"]
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 [tool.black]
 line-length = 110

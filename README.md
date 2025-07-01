@@ -5,21 +5,38 @@ This function wraps the library pyproj (a Python implementation of geospatial PR
 
 An example notebook `examples/example_convert.ipynb` demonstrates the function itself. Interacting with the BMI module is demonstrated in `examples/run_bmi_datum_sync.py`. `tests` individually tests both the base function and BMI wrapper.
 
-To run the python function:
-`pip install -e .`
+This module currently requires network connectivity.
 
-To run examples and/or develop:
-`pip install -r pyproject.toml --extra dev_examples`
+# Running
+This repository is managed with [UV](https://docs.astral.sh/uv/getting-started/installation/). Installing with `pip` may cause import problems. To install with uv:
 
-To test:
-`pip install -r pyproject.toml --extra test`
+`uv sync`
+
+`source .venv/bin/activate`
+
+To run juptyer notebook examples and tests:
+
+`uv sync --extra dev-examples`
+
+## Testing
+To run the collection of pytests, at root directory with `dev-examples` installed, run:
+
+`pytest tests`
+
+If you have import problems after running `uv sync`, update `uv` with `uv self update`.
 
 # NextGen inflows & outflows dataset to coastal area
 Dataset related to NextGen inflows and outflows has been added to 'examples/data/NextGen'
 
-To verify that the dataset meets the required criteria, run the following test code:  
-'pytest -v tests/unit/test_NGen_datum_sync.py'
+To verify that the dataset meets the required criteria, run the following test code:
+`pytest -v tests/unit/test_NGen_datum_sync.py`
 
-To convert the NextGen dataset into the crs that the coastal model needs, please run the following code:
-'examples/NGen_bmi_datum_sync.py'  
-prior to run the code, verify that the bmi_config.yaml file in examples/data/NextGen/ is properly configured to match your current coordinate reference system (CRS) and target output CRS.
+To convert the NextGen dataset into the crs for coastal model, use `examples/NGEN_bmi_datum_sync.py`.
+
+1. Open the file and set output working directory.
+2. Verify that `bmi_config.yaml` file in `examples/data/NextGen/` is properly configured to match your current coordinate reference system (CRS) and target output CRS.
+3. Run:
+```
+cd examples
+python NGen_bmi_datum_sync.py
+```

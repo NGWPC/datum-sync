@@ -5,7 +5,7 @@ import numpy as np
 import yaml
 from numpy.typing import NDArray
 
-from datum_sync import DatumSync
+from datum_sync.datum_sync import DatumSync
 from datum_sync.bmi.bmi_base import BmiBase
 from datum_sync.bmi.config import DatumSyncConfig
 
